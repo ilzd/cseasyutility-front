@@ -1,0 +1,29 @@
+<div class="p-4 max-w-3xl mx-auto" *ngIf="lineup">
+    <a routerLink="/lineups" class="block mt-6 text-blue-600 hover:underline">← Voltar para a lista</a>
+    <h1 class="text-2xl font-bold mb-2">{{ lineup.title.pt }}</h1>
+    <p class="mb-4 text-gray-600">{{ lineup.description.pt }}</p>
+
+    <div class="space-y-2">
+        <p><strong>Mapa:</strong> {{ lineup.map.name }}</p>
+
+        <p>
+            <strong>Origem:</strong> {{ lineup.origin.area.name.pt }} ({{
+            lineup.origin.coordinate.x
+            }}, {{ lineup.origin.coordinate.y }})
+        </p>
+
+        <p>
+            <strong>Destino:</strong> {{ lineup.destination.area.name.pt }} ({{
+            lineup.destination.coordinate.x
+            }}, {{ lineup.destination.coordinate.y }})
+        </p>
+
+        <p><strong>Granada:</strong> {{ getUtilityName(lineup.utility) }}</p>
+    </div>
+
+    <div class="mt-4" *ngIf="lineup.videoURL">
+        <h2 class="text-lg font-semibold">Vídeo</h2>
+        <iframe class="w-full aspect-video rounded border" [src]="sanitizedVideoUrl" frameborder="0"
+            allowfullscreen></iframe>
+    </div>
+</div>

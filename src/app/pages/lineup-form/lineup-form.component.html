@@ -1,0 +1,152 @@
+<div class="p-4 max-w-xl mx-auto">
+    <h1 class="text-xl font-bold mb-4">Nova Lineup</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+        <div>
+            <label class="block">Título (pt)</label>
+            <input formControlName="title" class="w-full border p-2 rounded" />
+        </div>
+
+        <div>
+            <label class="block">Descrição (pt)</label>
+            <textarea formControlName="description" class="w-full border p-2 rounded"></textarea>
+        </div>
+
+        <div>
+            <label class="block">Mapa</label>
+            <select formControlName="map" class="w-full border p-2 rounded" (change)="onMapChange()">
+                <option *ngFor="let map of maps" [value]="map._id">
+                    {{ map.name }}
+                </option>
+            </select>
+        </div>
+
+        <div>
+            <h2 (click)="selectOrigin()" class="block">Área de Origem</h2>
+
+            <div>
+                {{ originArea?.name?.pt || 'Selecione uma área' }}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h2 class="block">Origem X</h2>
+                <div>
+                    {{ originCoordinate?.x || 'Selecione uma área' }}
+                </div>
+            </div>
+            <div>
+                <h2 class="block">Origem Y</h2>
+                <div>
+                    {{ originCoordinate?.y || 'Selecione uma área' }}
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2 (click)="selectDestination()" class="block">Área de Destino</h2>
+            <div>
+                {{ destinationArea?.name?.pt || 'Selecione uma área' }}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h2 class="block">Destino X</h2>
+                <div>
+                    {{ destinationCoordinate?.x || 'Selecione uma área' }}
+                </div>
+            </div>
+            <div>
+                <h2 class="block">Destino Y</h2>
+                <div>
+                    {{ destinationCoordinate?.y || 'Selecione uma área' }}
+                </div>
+            </div>
+        </div>
+
+        <!-- <div>
+          <label class="block">Área de Origem</label>
+          <select
+            formControlName="originArea"
+            class="w-full border p-2 rounded"
+          >
+            <option *ngFor="let area of areas" [value]="area._id">
+              {{ area.name.pt }}
+            </option>
+          </select>
+        </div> -->
+
+        <!-- <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block">Origem X</label>
+            <input
+              type="number"
+              formControlName="originX"
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label class="block">Origem Y</label>
+            <input
+              type="number"
+              formControlName="originY"
+              class="w-full border p-2 rounded"
+            />
+          </div>
+        </div> -->
+
+        <!-- <div>
+          <label class="block">Área de Destino</label>
+          <select
+            formControlName="destinationArea"
+            class="w-full border p-2 rounded"
+          >
+            <option *ngFor="let area of areas" [value]="area._id">
+              {{ area.name.pt }}
+            </option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block">Destino X</label>
+            <input
+              type="number"
+              formControlName="destinationX"
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label class="block">Destino Y</label>
+            <input
+              type="number"
+              formControlName="destinationY"
+              class="w-full border p-2 rounded"
+            />
+          </div>
+        </div> -->
+
+        <div>
+            <label class="block">Tipo de Granada</label>
+            <select formControlName="utility" class="w-full border p-2 rounded">
+                <option [value]="0">Flashbang</option>
+                <option [value]="1">HE</option>
+                <option [value]="2">Molotov</option>
+                <option [value]="3">Incendiary</option>
+                <option [value]="4">Smoke</option>
+            </select>
+        </div>
+
+        <div>
+            <label class="block">URL do vídeo</label>
+            <input type="text" formControlName="videoURL" class="w-full border p-2 rounded" />
+        </div>
+
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            [disabled]="form.invalid">
+            Salvar Lineup
+        </button>
+    </form>
+</div>

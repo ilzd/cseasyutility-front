@@ -1,0 +1,13 @@
+<div class="p-4">
+    <h1 class="text-xl font-bold mb-4">Lineups</h1>
+    <div *ngIf="lineups.length === 0">Nenhuma lineup encontrada.</div>
+    <div class="grid gap-4">
+        <div *ngFor="let lineup of lineups" class="border p-4 rounded shadow hover:bg-gray-50 transition">
+            <h2 class="text-lg font-semibold">{{ lineup.title.pt }}</h2>
+            <p class="text-sm text-gray-600">{{ lineup.description.pt }}</p>
+            <a class="text-blue-600 hover:underline" [routerLink]="['/lineups', lineup._id]">
+                Ver detalhes
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<h2>Selecione a posição no mapa</h2>
+<div id="phaser-container" style="width: 100%; height: 600px;"></div>
+
+<div class="actions">
+  <button mat-button (click)="cancel()">Cancelar</button>
+  <button mat-button [disabled]="!selectedPosition" (click)="confirm()">Confirmar</button>
+</div>
